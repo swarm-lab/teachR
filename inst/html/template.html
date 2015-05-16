@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>#!title#</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+#!r_highlight#
+
+#!mathjax#
+
+<style type="text/css">
+#!markdown_css#
+
+table.full {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+}
+
+td.title{
+  background-color: #99CCFF;
+  font-weight: bold;
+  width: 100px;
+  vertical-align: top;
+  text-align: justify;
+}
+
+tr.normal td {
+  background-color: #CCCCCC;
+  vertical-align: top;
+  text-align: justify;
+}
+</style>
+
+
+
+#!header#
+
+</head>
+
+<body>
+<h1>#!title#</h1>
+<hr>
+#!html_output#
+</body>
+
+</html>
