@@ -22,7 +22,7 @@ shinyServer(function(input, output) {
                   n = 2)
     
     out <- dede(c(N = parms$iniN, S = parms$iniS, Q = parms$iniQ), 
-                0:input$t, 
+                0:3600, 
                 ode_sys, 
                 parms)
     
@@ -30,13 +30,13 @@ shinyServer(function(input, output) {
         
     g <- ggplot(data = out,
                 aes(x = time)) + 
-      geom_path(aes(y = S1, color = "Source 1  "), size = 1) + 
-      geom_path(aes(y = S2, color = "Source 2  "), size = 1) +
+      geom_path(aes(y = S1, color = "Source 1  "), size = 2) + 
+      geom_path(aes(y = S2, color = "Source 2  "), size = 2) +
       theme_minimal(base_size = 18) + 
       theme(legend.position = "top", legend.title=element_blank()) +
       xlab("Time") + ylab("Number of ants") +
-      scale_color_manual(values = c("tomato3", "dodgerblue3"))
-    
+      scale_colour_manual(values = c("#0072B2", "#D55E00")) 
+      
     print(g)  
   })
 })
