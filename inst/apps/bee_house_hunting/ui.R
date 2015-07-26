@@ -90,7 +90,7 @@ shinyUI(
                
                p(strong("Source code:"), 
                  a("GitHub",
-                   href = "https://github.com/swarm-lab/Shiny/tree/master/aggregation_segregation",
+                   href = "https://github.com/swarm-lab/teachR/tree/master/inst/apps/bee_house_hunting",
                    target = "_blank")),
                
                p(strong("Created with:"), 
@@ -112,7 +112,7 @@ shinyUI(
     ),
     
     tabPanel(tagList(tags$html("Powered by"),
-                     tags$img(src = "https://dq3p0g5ijakv8.cloudfront.net/assets/build-40/img/white-rstudio-logo.png",
+                     tags$img(src = "white-rstudio-logo.png",
                               height="20")),
              value = "RStudio",
              tags$head(tags$script(src = "actions.js"))
