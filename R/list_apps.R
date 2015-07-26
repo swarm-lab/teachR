@@ -92,7 +92,7 @@ list_apps <- function(categories = NULL, keywords = NULL) {
         
         md <- c(md, "<tr class='normal'>")
         md <- c(md, "<td class='title'>Command: </td>")
-        md <- c(md, paste0("<td><code>", "run_app(", sub(" ", "", tmp$Command[j]), ")</code></td>"))
+        md <- c(md, paste0("<td><code>", "run_app(\"", sub(" ", "", tmp$Command[j]), "\")</code></td>"))
         md <- c(md, "</tr>")
         
         md <- c(md, "<tr class='normal'>")
