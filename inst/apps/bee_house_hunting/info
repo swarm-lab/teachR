@@ -1,0 +1,11 @@
+Title: "House hunting" in honeybees. 
+Version: 0.1
+Date: 2015-05-13
+Author: Simon Garnier
+Maintainer: Simon Garnier <garnier@njit.edu>
+Description: This app illustrates the principle of collective nest selection in honeybees.
+Category: Biology
+Keywords: Honeybees, Decision-making, Self-Organization
+License: GPL (>= 3)
+Depends: dplyr (>= 0.4.1), ggplot2 (>= 1.0.1), deSolve (>= 1.11)
+Command: bee_house_hunting
