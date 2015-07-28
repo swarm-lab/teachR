@@ -7,5 +7,5 @@ Description: This app illustrates the spreading of two competing opinions in an 
 Category: Biology, Social Science
 Keywords: Opinion dynamics
 License: GPL (>= 3)
-Depends: ggplot2 (>= 1.0.1), grid (>= 3.2.1), simecol (>= 0.8-6), grip
+Depends: ggplot2 (>= 1.0.1), grid (>= 3.2.1), gridExtra (>= 2.0.0), dplyr (>= 0.4.2), scales (>= 0.2.5), simecol (>= 0.8-6), grip
 Command: opinion_dynamics

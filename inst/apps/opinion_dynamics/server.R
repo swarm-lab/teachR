@@ -1,7 +1,10 @@
 library(shiny)
 library(simecol)
 library(ggplot2)
+library(scales)
+library(dplyr)
 library(grid)
+library(gridExtra)
 
 shinyServer(function(input, output, session) {  
   data <- reactiveValues()
@@ -67,13 +70,13 @@ shinyServer(function(input, output, session) {
       geom_line(data = data$summary,
                 aes(x = time, y = s2), 
                 color = alpha("dodgerblue", 0.25), size = 1) +
-      geom_line(data = filter(data$summary, time <= input$time + 1),
+      geom_line(data = filter(data$summary, time <= (input$time + 1)),
                 aes(x = time, y = 25 * 25 - s1 - s2, color = "Uncommitted"), 
                 size = 1) +
-      geom_line(data = filter(data$summary, time <= input$time + 1),
+      geom_line(data = filter(data$summary, time <= (input$time + 1)),
                 aes(x = time, y = s1, color = "Opinion 1    "), 
                 size = 1) + 
-      geom_line(data = filter(data$summary, time <= input$time + 1),
+      geom_line(data = filter(data$summary, time <= (input$time + 1)),
                 aes(x = time, y = s2, color = "Opinion 2    "), 
                 size = 1) +  
       geom_vline(xintercept = input$time, color = "grey") +
