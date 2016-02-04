@@ -24,7 +24,7 @@
 #' 
 #' @export
 #'
-list_apps <- function(categories = NULL, keywords = NULL) {  
+list_apps <- function(categories=NULL, keywords=NULL) {  
   apps <- dir(paste0(find.package("teachR"), "/apps"))
   info_table <- data.frame()
   
