@@ -1,0 +1,11 @@
+Title: The Wisdom of Crowds. 
+Version: 0.1
+Date: 2016-02-10
+Author: Simon Garnier
+Maintainer: Simon Garnier <garnier@njit.edu>
+Description: This app illustrates the 'Wisdom of Crowds' effect and what happens when social interactions are allowed to happen between the actors.
+Category: Biology, Social Science
+Keywords: Opinion dynamics
+License: GPL (>= 3)
+Depends: ggplot2, dplyr, compiler, memoise, msm
+Command: wisdom_of_crowds
