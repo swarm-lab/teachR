@@ -114,11 +114,11 @@ shinyUI(
                tags$ol(
                  tags$li("The left represents the percentage of individuals in 
                          each replicate that made a worse guess that the group's
-                         average in that replicate."), 
-                 tags$li("The right graph represents the group's standard 
-                         deviation in each replicate, that is how far from the 
-                         true number of gumballs was each individual in average 
-                         in that replicate.")
+                         average in that replicate. Higher values indicates that
+                         the group perform better than most of its members."), 
+                 tags$li("The right graph represents the distribution of the 
+                         groups' standard deviations. Smaller values indicates
+                         that individual opinions are more similar to each other.")
                ),
                
                tags$hr()
