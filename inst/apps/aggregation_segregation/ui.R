@@ -1,4 +1,5 @@
 library(shiny)
+library(ggvis)
 
 shinyUI(
   navbarPage(
@@ -14,41 +15,97 @@ shinyUI(
                sidebarPanel(
                  width = 3, 
                  
-                 sliderInput("n", "Number of individuals", 
-                             min = 2, max = 500, value = 200, step = 2, width = "100%"), hr(),
+                 sliderInput("nIndiv", "Number of individuals", 
+                             min = 2, max = 500, value = 200), 
                  
-                 sliderInput("affin_same", "Affinity with same color", 
-                             min = -1, max = 1, value = 1, step = 0.1, width = "100%"), hr(),
+                 tags$hr(),
                  
-                 sliderInput("affin_diff", "Affinity with different color", 
-                             min = -1, max = 1, value = 0, step = 0.1, width = "100%"), hr(),
+                 sliderInput("affinSame", "Affinity with same color", 
+                             min = -1, max = 1, value = 0, step = 0.1),
                  
-                 div(style = "text-align: center;",
-                     actionButton("goButton", "Rerun", icon = icon("refresh"))
-                 )
+                 tags$hr(),
+                 
+                 sliderInput("affinOther", "Affinity with different color", 
+                             min = -1, max = 1, value = 0, step = 0.1),
+                 
+                 tags$hr(),
+                 
+                 actionButton("start", "Start", style = "border: 2px solid; border-color: green; background-color: green;"),
+                 actionButton("stop", "Stop", style = "border: 2px solid; border-color: red; background-color: red;"),
+                 actionButton("reset", "Reset", style = "border: 2px solid; border-color: black;"),
+                 
+                 tags$hr(),
+                 
+                 tags$p("Step:", textOutput("count", inline = TRUE)),
+                 
+                 tags$hr()
                  
                ),
                
                # Main panel
                mainPanel(
                  fluidRow(
-                   column(6, plotOutput("plot1")),
-                   
-                   column(6, plotOutput("plot2"))
-                 ),
-                 
-                 sliderInput("time", "Timeline (move cursor or click on play button)", 
-                             min = 0, max = 100, value = 0, width = "100%",
-                             animate = animationOptions(
-                               interval = 500, loop = FALSE,
-                               playButton = tag("span", list(class = "glyphicon glyphicon-play")),
-                               pauseButton = tag("span", list(class = "glyphicon glyphicon-pause"))))),
-               
-               
+                   ggvisOutput("display")
+                 )
+               )
              )
     ),
     
-    tabPanel("Instructions"),
+    tabPanel("Instructions",
+             
+             fluidRow(
+               tags$hr(),
+               
+               h2("Goal"),
+               
+               p("This webapp simulates a simple aggregation mechanism."),
+               
+               p("In the absence of interaction, each individual particle moves 
+                 randomly at maximum speed. When two particles move close to 
+                 each other, they slow down if they have a positive affinity for 
+                 each other, or accelerate if they have a negative affinity for 
+                 each other. The amount of deceleration (resp. acceleration)
+                 depends on the strength of the affinity and the number of 
+                 particles within the interaction range of each particle."),
+               
+               tags$hr(),
+               
+               h2("Parameters"),
+               
+               p("This simulation takes 3 parameters that you can modify using 
+                 the sliders in the 'Model' tab."),
+               
+               tags$ol(
+                 tags$li(tags$b("Number of individuals: "), "this sets the number 
+                         of particles in the simulation. Change this value to 
+                         observe the effect of the particles' density on their 
+                         aggregation behavior. The new value will not be taken 
+                         into account unless you hit the 'Reset' button."), 
+                 tags$li(tags$b("Affinity with same color: "), "this determines 
+                         the level of affinity between particles of the same
+                         color. This parameter can be changed while the 
+                         simulation is running."), 
+                 tags$li(tags$b("Affinity with different color: "), "this determines 
+                         the level of affinity between particles of different
+                         colors. This parameter can be changed while the 
+                         simulation is running.")
+                 ),
+               
+               p("Use the 'Start' and 'Stop' buttons to run or pause the 
+                 simulation. The 'Reset' button will disperse the particles 
+                 randomly and update their number - if the corresponding 
+                 parameter has been modified."),
+               
+               tags$hr(),
+               
+               h2("Outputs"),
+               
+               p("This simulation returns an animated graph representing the XY 
+                 positions of the particles."),
+               
+               tags$hr()
+             )
+    ),
     
     tabPanel("About",
              
@@ -89,10 +146,10 @@ shinyUI(
                tags$hr()
              )
     ),
-        
+    
     tabPanel(tagList(tags$html("Powered by"),
                      tags$img(src = "white-rstudio-logo.png",
-                              height="20")),
+                              height = "20")),
              value = "RStudio",
              tags$head(tags$script(src = "actions.js"))
     )    

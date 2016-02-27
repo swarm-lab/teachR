@@ -1,3 +1,5 @@
+library(deSolve)
+
 ode_sys <- function(t, y, parms) {
   # ODE system to simulate the collective selection of a food source by ant colonies. 
   #
@@ -19,8 +21,8 @@ ode_sys <- function(t, y, parms) {
     
   nS <- length(parms$l)
   
-  Q <- sum(y[(nS+2):(2*nS+1)])
-  phi <- (parms$alpha * (parms$beta + Q)^parms$eta) / ((parms$beta + Q)^parms$eta + parms$gamma)
+  Q <- sum(y[(nS + 2):(2 * nS + 1)])
+  phi <- (parms$alpha * (parms$beta + Q) ^ parms$eta) / ((parms$beta + Q) ^ parms$eta + parms$gamma)
   
   dN <- -phi*y[1]
   dS <- rep(0,nS)
@@ -35,18 +37,18 @@ ode_sys <- function(t, y, parms) {
       philag <- 0
     } else {
       ylag <- lagvalue(t - parms$l[i])
-      Qlag <- sum(ylag[(nS+2):(2*nS+1)])
-      philag <- (parms$alpha * (parms$beta + Qlag)^parms$eta) / ((parms$beta + Qlag)^parms$eta + parms$gamma)
+      Qlag <- sum(ylag[(nS + 2):(2 * nS + 1)])
+      philag <- (parms$alpha * (parms$beta + Qlag) ^ parms$eta) / ((parms$beta + Qlag) ^ parms$eta + parms$gamma)
     }
     
-    P <- ((parms$k[i] + y[i+nS+1])^parms$n) / sum((parms$k + y[(nS+2):(2*nS+1)])^parms$n)
-    Plag <- ((parms$k[i] + ylag[i+nS+1])^parms$n) / sum((parms$k + ylag[(nS+2):(2*nS+1)])^parms$n)
+    P <- ((parms$k[i] + y[i + nS + 1]) ^ parms$n) / sum((parms$k + y[(nS + 2):(2 * nS + 1)]) ^ parms$n)
+    Plag <- ((parms$k[i] + ylag[i + nS + 1]) ^ parms$n) / sum((parms$k + ylag[(nS + 2):(2 * nS + 1)]) ^ parms$n)
     
-    dN <- dN + parms$psi*ylag[i+1]
+    dN <- dN + parms$psi*ylag[i + 1]
     
-    dS[i] <- -parms$psi*y[i+1] + philag*ylag[1]*Plag
+    dS[i] <- -parms$psi*y[i + 1] + philag * ylag[1] * Plag
     
-    dQ[i] <- parms$qe*P*phi*y[1] + parms$q[i]*parms$psi*ylag[i+1] - parms$rho*y[i+nS+1]
+    dQ[i] <- parms$qe * P * phi * y[1] + parms$q[i] * parms$psi * ylag[i + 1] - parms$rho * y[i + nS + 1]
     
   }
   

@@ -1,11 +1,10 @@
 library(shiny)
+library(ggvis)
 library(deSolve)
-library(ggplot2)
 
-# Shiny server call
 shinyServer(function(input, output) {
   
-  output$ODE.plot = renderPlot({
+  res <- reactive({
     parms <- list(iniN = input$N, 
                   iniS = rep(0,2), 
                   iniQ = rep(0,2), 
@@ -22,21 +21,32 @@ shinyServer(function(input, output) {
                   n = 2)
     
     out <- dede(c(N = parms$iniN, S = parms$iniS, Q = parms$iniQ), 
-                0:3600, 
+                seq(0, 3600, length.out = 360), 
                 ode_sys, 
                 parms)
     
-    out <- as.data.frame(out)
-        
-    g <- ggplot(data = out,
-                aes(x = time)) + 
-      geom_path(aes(y = S1, color = "Source 1  "), size = 2) + 
-      geom_path(aes(y = S2, color = "Source 2  "), size = 2) +
-      theme_minimal(base_size = 18) + 
-      theme(legend.position = "top", legend.title=element_blank()) +
-      xlab("Time") + ylab("Number of ants") +
-      scale_colour_manual(values = c("#0072B2", "#D55E00")) 
-      
-    print(g)  
+    data.frame(time = rep(out[, 1], 2), 
+               S = c(rep("Source 1", nrow(out)), rep("Source 2", nrow(out))),
+               val = c(out[, 3], out[, 4]))
+  })
+  
+  observe({
+    if (is.null(res)) {
+      return()
+    }
+    res %>%
+      ggvis(x = ~time, y = ~val, stroke = ~S) %>%
+      layer_lines(strokeWidth := 4) %>%
+      add_axis("x", title = "Time (sec)", title_offset = 50,
+               properties = axis_props(labels = list(fontSize = 16),
+                                       title = list(fontSize = 20))) %>%
+      add_axis("y", title = "Number of ants", title_offset = 50,
+               properties = axis_props(labels = list(fontSize = 16),
+                                       title = list(fontSize = 20))) %>%
+      add_relative_scales() %>%
+      add_legend("stroke", title = "", 
+                 properties = legend_props(labels = list(fontSize = 16))) %>%
+      set_options(width = "auto", height = "90%", resizable = FALSE, duration = 500) %>%
+      bind_shiny("display")
   })
 })
