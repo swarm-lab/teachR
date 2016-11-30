@@ -1,8 +1,9 @@
-#' Run teaching apps provided by \code{\link[<teachR>:<teachR>-package]{teachR}}
+#' @title Run \code{\link[<teachR>:<teachR>-package]{teachR}} Apps
 #'
-#' This function calls a Shiny app provided by the \code{\link[<teachR>:<teachR>-package]{teachR}} 
-#' library. The list of available Shiny apps can be obtained by typing 
-#' \code{list_apps()} in your R terminal. 
+#' @description This function calls a Shiny app provided by the 
+#'  \code{\link[<teachR>:<teachR>-package]{teachR}} library. The list of 
+#'  available Shiny apps can be obtained by typing \code{list_apps()} in your R 
+#'  terminal. 
 #' 
 #' @param app The name of the app to run.
 #' 

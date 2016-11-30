@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_categories.R
 \name{list_categories}
 \alias{list_categories}
-\title{List the categories of all apps available through \code{\link[<teachR>:<teachR>-package]{teachR}}}
+\title{List Categories of All \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
 \usage{
 list_categories()
 }
@@ -11,8 +11,9 @@ A vector of character strings, each of them corresponding to a different
 category.
 }
 \description{
-This function generates a listing  of all the categories of apps available through 
-the \code{\link[<teachR>:<teachR>-package]{teachR}} library.
+This function generates a listing  of all the categories of apps 
+ available through the \code{\link[<teachR>:<teachR>-package]{teachR}} 
+ library.
 }
 \examples{
 list_categories()

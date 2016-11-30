@@ -1,7 +1,8 @@
-#' List the keywords of all apps available through \code{\link[<teachR>:<teachR>-package]{teachR}}
+#' @title List Keywords of All \code{\link[<teachR>:<teachR>-package]{teachR}} Apps
 #'
-#' This function generates a listing of all the keywords of apps available through 
-#' the \code{\link[<teachR>:<teachR>-package]{teachR}} library. 
+#' @description This function generates a listing of all the keywords of apps 
+#'  available through the \code{\link[<teachR>:<teachR>-package]{teachR}} 
+#'  library. 
 #' 
 #' @return A vector of character strings, each of them corresponding to a different
 #' keyword.

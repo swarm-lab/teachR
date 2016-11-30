@@ -1,10 +1,10 @@
-#' List apps available through \code{\link[<teachR>:<teachR>-package]{teachR}}
+#' @title List \code{\link[<teachR>:<teachR>-package]{teachR}} Apps
 #'
-#' This function generates a webpage listing all the apps available through the 
-#' \code{\link[<teachR>:<teachR>-package]{teachR}} library. The list can be 
-#' filtered by category (type \code{list_categories()} for a list of existing
-#' categories) and keywords (type \code{list_keywords()} for a list of existing
-#' keywords).
+#' @description This function generates a webpage listing all the apps available 
+#'  through the \code{\link[<teachR>:<teachR>-package]{teachR}} library. The 
+#'  list can be filtered by category (type \code{list_categories()} for a list 
+#'  of existing categories) and keywords (type \code{list_keywords()} for a list 
+#'  of existing keywords).
 #' 
 #' @param categories A character string or a vector of character strings 
 #' corresponding to existing app categories (case insensitive).

@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_app.R
 \name{export_app}
 \alias{export_app}
-\title{Export teaching apps provided by \code{\link[<teachR>:<teachR>-package]{teachR}}}
+\title{Export \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
 \usage{
 export_app(app, dest)
 }
@@ -16,9 +16,10 @@ with the name of the app will be created at this location.}
 This function does not return anything.
 }
 \description{
-This function expor a Shiny app provided by the \code{\link[<teachR>:<teachR>-package]{teachR}} 
-library to a local folder on a user's computer. Useful for modifying the app 
-or running it on a Shiny Server instance for example.
+This function expor a Shiny app provided by the 
+ \code{\link[<teachR>:<teachR>-package]{teachR}} library to a local folder on 
+ a user's computer. Useful for modifying the app or running it on a Shiny 
+ Server instance for example.
 }
 \examples{
 # Export app to the current working directory

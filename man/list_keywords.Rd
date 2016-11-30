@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_keywords.R
 \name{list_keywords}
 \alias{list_keywords}
-\title{List the keywords of all apps available through \code{\link[<teachR>:<teachR>-package]{teachR}}}
+\title{List Keywords of All \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
 \usage{
 list_keywords()
 }
@@ -11,8 +11,9 @@ A vector of character strings, each of them corresponding to a different
 keyword.
 }
 \description{
-This function generates a listing of all the keywords of apps available through 
-the \code{\link[<teachR>:<teachR>-package]{teachR}} library.
+This function generates a listing of all the keywords of apps 
+ available through the \code{\link[<teachR>:<teachR>-package]{teachR}} 
+ library.
 }
 \examples{
 list_keywords()

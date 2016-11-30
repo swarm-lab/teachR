@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_app.R
 \name{run_app}
 \alias{run_app}
-\title{Run teaching apps provided by \code{\link[<teachR>:<teachR>-package]{teachR}}}
+\title{Run \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
 \usage{
 run_app(app)
 }
@@ -13,9 +13,10 @@ run_app(app)
 This function does not return anything.
 }
 \description{
-This function calls a Shiny app provided by the \code{\link[<teachR>:<teachR>-package]{teachR}} 
-library. The list of available Shiny apps can be obtained by typing 
-\code{list_apps()} in your R terminal.
+This function calls a Shiny app provided by the 
+ \code{\link[<teachR>:<teachR>-package]{teachR}} library. The list of 
+ available Shiny apps can be obtained by typing \code{list_apps()} in your R 
+ terminal.
 }
 \details{
 If called from RStudio, the app will open in the internal RStudio 
