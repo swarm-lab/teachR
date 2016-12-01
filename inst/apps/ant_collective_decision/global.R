@@ -1,3 +1,5 @@
+pacman::p_load(shiny, shinythemes, deSolve, ggvis)
+
 library(deSolve)
 
 ode_sys <- function(t, y, parms) {

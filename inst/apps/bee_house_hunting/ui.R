@@ -1,13 +1,13 @@
-library(shiny)
-
 shinyUI(
   navbarPage(
     title = "\"House hunting\" in honeybees",
-    theme = "bootstrap.css",
+    theme = shinytheme("cosmo"),
     fluid = FALSE,
     collapsible = TRUE,
     
     tabPanel("Model",
+             
+             includeCSS("www/custom.css"),
              
              # Sidebar
              sidebarLayout(

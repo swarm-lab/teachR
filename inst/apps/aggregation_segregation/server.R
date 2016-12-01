@@ -1,6 +1,3 @@
-library(shiny)
-library(ggvis)
-
 shinyServer(function(input, output, session) {
   
   react <- reactiveValues(count = 0)

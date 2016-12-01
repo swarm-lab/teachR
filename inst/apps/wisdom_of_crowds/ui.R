@@ -1,11 +1,13 @@
 shinyUI(
   navbarPage(
     title = "The Wisdom of Crowds",
-    theme = "bootstrap.css",
+    theme = shinytheme("cosmo"),
     fluid = FALSE,
     collapsible = TRUE,
     
     tabPanel("Model",
+             
+             includeCSS("www/custom.css"),
              
              # Sidebar
              sidebarLayout(

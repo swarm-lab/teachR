@@ -1,3 +1,5 @@
+pacman::p_load(shiny, shinythemes, ggvis)
+
 rw <- function(df) {
   n <- nrow(df)
   

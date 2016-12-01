@@ -1,9 +1,3 @@
-# Required libraries
-library(shiny)
-library(deSolve)
-library(ggplot2)
-
-# Shiny server call
 shinyServer(function(input, output) {
   
   output$ODE.plot <- renderPlot({

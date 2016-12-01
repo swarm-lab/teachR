@@ -1,7 +1,3 @@
-library(shiny)
-library(ggvis)
-library(deSolve)
-
 shinyServer(function(input, output) {
   
   res <- reactive({

@@ -1,13 +1,13 @@
-library(shiny)
-
 shinyUI(
   navbarPage(
     title = "Opinion dynamics",
-    theme = "bootstrap.css",
+    theme = shinytheme("cosmo"),
     fluid = FALSE,
     collapsible = TRUE,
     
     tabPanel("Model",
+             
+             includeCSS("www/custom.css"),
              
              # Sidebar
              sidebarLayout(
@@ -19,7 +19,7 @@ shinyUI(
                              min = 0, max = 1, value = 0.25, step = 0.01, width = "100%"),
                  sliderInput("w2", "Strength of opinion 2:",
                              min = 0, max = 1, value = 0.25, step = 0.01, width = "100%"),
-                 p(align='center',
+                 p(align = 'center',
                    actionButton("rerun", "Run"))
                ),
                
@@ -77,7 +77,7 @@ shinyUI(
     
     tabPanel(tagList(tags$html("Powered by"),
                      tags$img(src = "white-rstudio-logo.png",
-                              height="20")),
+                              height = "20")),
              value = "RStudio",
              tags$head(tags$script(src = "actions.js"))
     )    

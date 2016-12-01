@@ -1,3 +1,5 @@
+pacman::p_load(shiny, shinythemes, simecol, ggplot2, scales, dplyr, grid, gridExtra)
+
 grid_sys <- function(time, init, parms) {
   o1 <- init
   o1[o1 < 0] <- 0
@@ -18,9 +20,3 @@ grid_sys <- function(time, init, parms) {
   
   init
 }
-
-
-
-
-
-

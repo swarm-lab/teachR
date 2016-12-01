@@ -1,3 +1,5 @@
+pacman::p_load(shiny, shinythemes, deSolve, ggplot2)
+
 # ODE function
 ode_sys <- function(t, y, parms) {
   yu <- 1 - sum(y)

@@ -1,14 +1,13 @@
-library(shiny)
-library(ggvis)
-
 shinyUI(
   navbarPage(
     title = "Aggregation, segregation",
-    theme = "bootstrap.css",
+    theme = shinytheme("cosmo"),
     fluid = FALSE,
     collapsible = TRUE,
     
     tabPanel("Model",
+             
+             includeCSS("www/custom.css"),
              
              # Sidebar
              sidebarLayout(

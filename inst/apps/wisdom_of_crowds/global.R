@@ -1,9 +1,4 @@
-library(shiny)
-library(dplyr)
-library(ggplot2)
-library(compiler)
-library(memoise)
-library(msm)
+pacman::p_load(shiny, shinythemes, dplyr, ggplot2, compiler, memoise, msm)
 
 enableJIT(3)
 

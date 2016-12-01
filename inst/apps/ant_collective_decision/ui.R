@@ -1,14 +1,13 @@
-library(shiny)
-library(ggvis)
-
 shinyUI(
   navbarPage(
     title = "Collective food source selection in ants",
-    theme = "bootstrap.css",
+    theme = shinytheme("cosmo"),
     fluid = FALSE,
     collapsible = TRUE,
     
     tabPanel("Model",
+             
+             includeCSS("www/custom.css"),
              
              # Sidebar
              sidebarLayout(

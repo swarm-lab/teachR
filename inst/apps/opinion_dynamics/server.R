@@ -1,11 +1,3 @@
-library(shiny)
-library(simecol)
-library(ggplot2)
-library(scales)
-library(dplyr)
-library(grid)
-library(gridExtra)
-
 shinyServer(function(input, output, session) {  
   data <- reactiveValues()
   
@@ -34,7 +26,6 @@ shinyServer(function(input, output, session) {
   })
   
   output$plot <- renderPlot({
-    print(input$time)
     tiles <- data.frame(expand.grid(x = 1:25, y = 1:25),
                         z = as.vector(data$steps[[input$time + 1]]))
     tiles$z <- factor(sign(tiles$z), levels = as.character(-1:1))
