@@ -33,10 +33,10 @@ shinyUI(
                mainPanel(
                  fluidRow(
                    column(6,
-                          plotOutput("IBM.plot1")),
+                          plotlyOutput("IBM.plot1", height = "100%")),
                    
                    column(6,
-                          plotOutput("IBM.plot2"))
+                          plotlyOutput("IBM.plot2", height = "100%"))
                  ),
                  
                  tags$hr(),

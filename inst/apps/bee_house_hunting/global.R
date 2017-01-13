@@ -1,5 +1,5 @@
 #### LOAD LIBRARIES #### 
-pacman::p_load(shiny, shinythemes, deSolve, plotly)
+pacman::p_load(shiny, shinythemes, deSolve, plotly, dplyr)
 
 
 #### DEFINE CUSTOM FUNCTIONS ####

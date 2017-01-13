@@ -7,5 +7,5 @@ Description: This app illustrates the principle of self-organized aggregation an
 Category: Biology, Social Science
 Keywords: Aggregation, Segregation, Self-Organization
 License: GPL (>= 3)
-Depends: dplyr (>= 0.4.1), ggplot2 (>= 1.0.1)
+Depends: dplyr (>= 0.4.1), ggvis (>= 0.4.3)
 Command: aggregation_segregation

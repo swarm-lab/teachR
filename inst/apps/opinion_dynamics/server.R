@@ -38,8 +38,7 @@ shinyServer(function(input, output, session) {
       hide_axis("x") %>%
       hide_axis("y") %>%
       hide_legend("fill") %>%
-      set_options(width = "auto", height = "100%", resizable = FALSE, 
-                  duration = 30) %>%
+      set_options(width = "auto", height = "100%", resizable = FALSE, duration = 30) %>%
       bind_shiny("display1")
     
     filter(data$summary, time <= (input$time + 1)) %>%
@@ -50,8 +49,7 @@ shinyServer(function(input, output, session) {
       scale_numeric("x", domain = c(0, input$max.time), nice = FALSE) %>%
       add_axis("x", title = "Time") %>%
       add_axis("y", title = "% population") %>%
-      set_options(width = "auto", height = "100%", resizable = FALSE, 
-                  duration = 30) %>%
+      set_options(width = "auto", height = "100%", resizable = FALSE, duration = 30) %>%
       bind_shiny("display2")
   })
 })

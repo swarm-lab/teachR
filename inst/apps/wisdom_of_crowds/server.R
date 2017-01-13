@@ -24,41 +24,41 @@ shinyServer(function(input, output, session) {
         r2 <- apply(tmp2 < tmp1, 2, sum)
         
         react$tab <- data.frame(
-          SOC = as.factor(rep(c("Control   ", "Experimental   "), each = N * 2)),
+          SOC = as.factor(rep(c("Control", "Experimental"), each = N * 2)),
           TYPE = rep(c("mean", "sd", "mean", "sd"), each = N),
-          VAL = c(100 * (r1 / input$n),
+          VAL = c(apply(m1, 2, mean), # 100 * (r1 / input$n),
                   apply(m1, 2, sd),
-                  100 * (r2 / input$n),
+                  apply(m2, 2, mean), # 100 * (r2 / input$n),
                   apply(m2, 2, sd)))
       }) 
     }
   })
   
-  output$IBM.plot1 <- renderPlot({
-    g <- ggplot(filter(react$tab, TYPE == "mean"),
-                aes(x = VAL, color = SOC, fill = SOC)) + 
-      geom_histogram(position = "identity", bins = 40) +
-      geom_vline(xintercept = 50, linetype = 2) +
-      xlim(0, 100) +
-      theme_minimal(base_size = 16) + 
-      theme(legend.position = "top", legend.title = element_blank()) +
-      xlab("Average > x% of group members") + ylab("Density") +
-      scale_color_manual(values = c("tomato3", "dodgerblue3")) + 
-      scale_fill_manual(values = alpha(c("tomato3", "dodgerblue3"), 0.25))
-    
-    print(g)
+  output$IBM.plot1 <- renderPlotly({
+    sub_dat <- filter(react$tab, TYPE == "mean")
+    r <- c(min(sub_dat$VAL), max(sub_dat$VAL))
+    plot_ly(sub_dat, type = "histogram", alpha = 0.6, 
+            x = ~VAL, color = ~SOC, colors = c("tomato3", "dodgerblue3"),
+            xbins = list(start = r[1], end = r[2], size = diff(r) / 40), 
+            autobinx = FALSE) %>%
+      layout(barmode = "overlay", hovermode = "x",
+             xaxis = list(title = "Group average"),
+             yaxis = list(title = "Count"),
+             font = list(size = 14),
+             legend = list(x = 0.5, y = 1.1, orientation = "h", xanchor = "center"))
   })
   
-  output$IBM.plot2 <- renderPlot({
-    g <- ggplot(filter(react$tab, TYPE == "sd"),
-                aes(x = VAL, color = SOC, fill = SOC)) + 
-      geom_histogram(position = "identity", bins = 40) +
-      theme_minimal(base_size = 16) + 
-      theme(legend.position = "top", legend.title = element_blank()) +
-      xlab("Group standard deviation") + ylab("Density") +
-      scale_color_manual(values = c("tomato3", "dodgerblue3")) + 
-      scale_fill_manual(values = alpha(c("tomato3", "dodgerblue3"), 0.25))
-    
-    print(g)
+  output$IBM.plot2 <- renderPlotly({
+    sub_dat <- filter(react$tab, TYPE == "sd")
+    r <- c(min(sub_dat$VAL), max(sub_dat$VAL))
+    plot_ly(sub_dat, type = "histogram", alpha = 0.6, 
+            x = ~VAL, color = ~SOC, colors = c("tomato3", "dodgerblue3"),
+            xbins = list(start = r[1], end = r[2], size = diff(r) / 40), 
+            autobinx = FALSE) %>%
+      layout(barmode = "overlay", hovermode = "x",
+             xaxis = list(title = "Group standard deviation"),
+             yaxis = list(title = "Count"),
+             font = list(size = 14),
+             legend = list(x = 0.5, y = 1.1, orientation = "h", xanchor = "center"))
   })
 })

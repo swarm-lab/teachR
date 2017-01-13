@@ -7,5 +7,5 @@ Description: This app illustrates the principle of collective decision-making in
 Category: Biology
 Keywords: Ants, Decision-making, Self-Organization
 License: GPL (>= 3)
-Depends: dplyr (>= 0.4.1), ggplot2 (>= 1.0.1), deSolve (>= 1.11)
+Depends: dplyr (>= 0.4.1), plotly (>= 4.5.6), deSolve (>= 1.11)
 Command: ant_collective_decision

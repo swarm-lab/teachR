@@ -1,5 +1,5 @@
 #### LOAD LIBRARIES #### 
-pacman::p_load(shiny, shinythemes, ggvis)
+pacman::p_load(shiny, shinythemes, dplyr, ggvis)
 
 
 #### DEFINE CUSTOM FUNCTIONS ####

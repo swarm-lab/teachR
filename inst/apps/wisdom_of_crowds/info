@@ -7,5 +7,5 @@ Description: This app illustrates the 'Wisdom of Crowds' effect and what happens
 Category: Biology, Social Science
 Keywords: Opinion dynamics
 License: GPL (>= 3)
-Depends: ggplot2, dplyr, compiler, memoise, msm
+Depends: plotly, dplyr, compiler, memoise, msm
 Command: wisdom_of_crowds

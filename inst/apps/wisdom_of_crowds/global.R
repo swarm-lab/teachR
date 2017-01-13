@@ -1,4 +1,4 @@
-pacman::p_load(shiny, shinythemes, dplyr, ggplot2, compiler, memoise, msm)
+pacman::p_load(shiny, shinythemes, dplyr, plotly, compiler, memoise, msm)
 
 enableJIT(3)
 
