@@ -27,7 +27,8 @@ shinyUI(
                # Main panel
                mainPanel(
                  fluidRow(
-                   column(12, plotOutput("ODE.plot", height = "500px"))          
+                   id = "the_display_row",
+                   column(12, plotlyOutput("the_display", height = "100%"))
                  ),
                  
                  fluidRow(

@@ -7,5 +7,5 @@ Description: This app illustrates the principle of collective nest selection in 
 Category: Biology
 Keywords: Honeybees, Decision-making, Self-Organization
 License: GPL (>= 3)
-Depends: dplyr (>= 0.4.1), ggplot2 (>= 1.0.1), deSolve (>= 1.11)
+Depends: dplyr (>= 0.4.1), plotly (>= 4.5.6), deSolve (>= 1.11)
 Command: bee_house_hunting

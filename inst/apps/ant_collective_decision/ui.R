@@ -36,7 +36,8 @@ shinyUI(
                # Main panel
                mainPanel(
                  fluidRow(
-                   ggvisOutput("display")
+                   id = "the_display_row",
+                   column(12, plotlyOutput("the_display", height = "100%"))
                  ),
                  
                  fluidRow(

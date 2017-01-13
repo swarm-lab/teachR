@@ -26,23 +26,17 @@ shinyServer(function(input, output) {
                val = c(out[, 3], out[, 4]))
   })
   
-  observe({
-    if (is.null(res)) {
-      return()
-    }
-    res %>%
-      ggvis(x = ~time, y = ~val, stroke = ~S) %>%
-      layer_lines(strokeWidth := 4) %>%
-      add_axis("x", title = "Time (sec)", title_offset = 50,
-               properties = axis_props(labels = list(fontSize = 16),
-                                       title = list(fontSize = 20))) %>%
-      add_axis("y", title = "Number of ants", title_offset = 50,
-               properties = axis_props(labels = list(fontSize = 16),
-                                       title = list(fontSize = 20))) %>%
-      add_relative_scales() %>%
-      add_legend("stroke", title = "", 
-                 properties = legend_props(labels = list(fontSize = 16))) %>%
-      set_options(width = "auto", height = "90%", resizable = FALSE, duration = 500) %>%
-      bind_shiny("display")
+  output$the_display <- renderPlotly({
+    g <- ggplot(data = res(), aes(x = time, y = val, color = S)) +
+      geom_path(size = 0.75) +
+      theme_minimal(base_size = 16) +
+      theme(legend.title = element_blank()) +
+      xlab("Time") + ylab("Number of ants") +
+      scale_color_manual(values = c("#2678B2", "#FD7F28"))
+    
+    ggplotly(g) %>%
+      layout(legend = list(x = 0.5, y = 1.1, orientation = "h", xanchor = "center"),
+             hovermode = "x")
   })
+  
 })

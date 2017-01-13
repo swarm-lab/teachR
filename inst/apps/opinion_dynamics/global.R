@@ -1,4 +1,4 @@
-pacman::p_load(shiny, shinythemes, simecol, ggplot2, scales, dplyr, grid, gridExtra)
+pacman::p_load(shiny, shinythemes, simecol, ggplot2, ggvis, scales, dplyr, grid, gridExtra)
 
 grid_sys <- function(time, init, parms) {
   o1 <- init

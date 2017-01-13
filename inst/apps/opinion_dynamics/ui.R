@@ -20,15 +20,25 @@ shinyUI(
                  sliderInput("w2", "Strength of opinion 2:",
                              min = 0, max = 1, value = 0.25, step = 0.01, width = "100%"),
                  p(align = 'center',
-                   actionButton("rerun", "Run"))
+                   actionButton("rerun", "Rerun"))
                ),
                
                # Main panel
                mainPanel(
                  fluidRow(
-                   column(12, plotOutput("plot", height = "500px"),
-                          uiOutput("timeline"))
-                 )
+                   column(6, 
+                          tags$div(class = "box", 
+                                   tags$div(class = "content", 
+                                            ggvisOutput("display1")))
+                          # plotOutput("plot", height = "500px")
+                 ),
+                 column(6, 
+                        tags$div(class = "box", 
+                                 tags$div(class = "content", 
+                                          ggvisOutput("display2")))
+                        # plotOutput("plot", height = "500px")
+                 ),
+                 uiOutput("timeline"))
                )
              )
     ),

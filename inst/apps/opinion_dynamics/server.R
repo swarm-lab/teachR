@@ -19,73 +19,40 @@ shinyServer(function(input, output, session) {
   
   output$timeline <- renderUI({
     sliderInput("time", "Timeline (move cursor or click on play button)", 
-                min = 0, max = input$max.time, value = 0, width = "100%",
-                animate = animationOptions(interval = 500, loop = FALSE,
+                min = 0, max = input$max.time, value = 0, step = 1, width = "100%", 
+                animate = animationOptions(interval = 250, loop = FALSE,
                                            playButton = tag("span", list(class = "glyphicon glyphicon-play")),
                                            pauseButton = tag("span", list(class = "glyphicon glyphicon-pause"))))
   })
   
-  output$plot <- renderPlot({
-    tiles <- data.frame(expand.grid(x = 1:25, y = 1:25),
-                        z = as.vector(data$steps[[input$time + 1]]))
-    tiles$z <- factor(sign(tiles$z), levels = as.character(-1:1))
+  observe({
+    if (is.null(input$time)) {
+      return()
+    } 
     
-    g1 <- ggplot(tiles,
-                 aes(x = x, y = y, fill = z)) +
-      geom_tile(color = "grey", size = 0.5) +
-      coord_fixed() +
-      scale_fill_manual(values = c("dodgerblue", "white", "tomato"), 
-                        drop = FALSE) +
-      theme_minimal() + 
-      theme(axis.line = element_blank(),
-            axis.text.x = element_blank(),
-            axis.text.y = element_blank(),
-            axis.ticks = element_blank(),
-            axis.title.x = element_blank(),
-            axis.title.y = element_blank(),
-            legend.position = "none",
-            panel.background = element_blank(),
-            panel.border = element_blank(),
-            panel.grid.major = element_blank(),
-            panel.grid.minor = element_blank(),
-            plot.background = element_blank(),
-            plot.margin = unit(c(0, 1, 0, 0), "line"))
+    data.frame(expand.grid(x = 1:25, y = 1:25),
+               z = sign(as.vector(data$steps[[input$time + 1]])) + 2) %>%
+      mutate(color = c("#1E90FF", "#FFFFFF", "#FF6347")[z]) %>%
+      ggvis(x = ~factor(x), y = ~factor(y), fill := ~color) %>%
+      layer_rects(width = band(), height = band(), strokeWidth := 0.1) %>%
+      hide_axis("x") %>%
+      hide_axis("y") %>%
+      hide_legend("fill") %>%
+      set_options(width = "auto", height = "100%", resizable = FALSE, 
+                  duration = 30) %>%
+      bind_shiny("display1")
     
-    g2 <- ggplot() + 
-      geom_line(data = data$summary,
-                aes(x = time, y = 25 * 25 - s1 - s2), 
-                color = alpha("black", 0.25), size = 1) +
-      geom_line(data = data$summary,
-                aes(x = time, y = s1), 
-                color = alpha("tomato", 0.25), size = 1) +
-      geom_line(data = data$summary,
-                aes(x = time, y = s2), 
-                color = alpha("dodgerblue", 0.25), size = 1) +
-      geom_line(data = filter(data$summary, time <= (input$time + 1)),
-                aes(x = time, y = 25 * 25 - s1 - s2, color = "Uncommitted"), 
-                size = 1) +
-      geom_line(data = filter(data$summary, time <= (input$time + 1)),
-                aes(x = time, y = s1, color = "Opinion 1    "), 
-                size = 1) + 
-      geom_line(data = filter(data$summary, time <= (input$time + 1)),
-                aes(x = time, y = s2, color = "Opinion 2    "), 
-                size = 1) +  
-      geom_vline(xintercept = input$time, color = "grey") +
-      coord_fixed(ratio = input$max.time / 625) +
-      theme_minimal(base_size = 18) +
-      theme(legend.position = "top", 
-            legend.title = element_blank(),
-            plot.margin = unit(c(0, 1, 1, 1), "line")) + 
-      xlab("Time") + ylab("Number of people") +
-      scale_color_manual(values = c("tomato", "dodgerblue", "black"))
-    
-    g3 <- arrangeGrob(g1, g2 + theme(legend.position = "none"), ncol = 2)
-    
-    tmp <- ggplot_gtable(ggplot_build(g2 + theme(plot.margin = unit(c(0, 0, 0, 0), "line"))))
-    leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
-    g4 <- tmp$grobs[[leg]]
-    
-    grid.arrange(g4, g3, heights = c(0.1, 1))
+    filter(data$summary, time <= (input$time + 1)) %>%
+      ggvis(x = ~time) %>%
+      layer_paths(y = ~100 * (25 * 25 - s1 - s2) / 625, stroke := "black", strokeWidth := 2) %>%
+      layer_paths(y = ~100 * s1 / 625, stroke := "tomato", strokeWidth := 2) %>%
+      layer_paths(y = ~100 * s2 / 625, stroke := "dodgerblue", strokeWidth := 2) %>%
+      scale_numeric("x", domain = c(0, input$max.time), nice = FALSE) %>%
+      add_axis("x", title = "Time") %>%
+      add_axis("y", title = "% population") %>%
+      set_options(width = "auto", height = "100%", resizable = FALSE, 
+                  duration = 30) %>%
+      bind_shiny("display2")
   })
 })
 
