@@ -2,24 +2,24 @@
 % Please edit documentation in R/list_categories.R
 \name{list_categories}
 \alias{list_categories}
-\title{List Categories of All \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
+\title{List Categories of All \code{teachR} Apps}
 \usage{
 list_categories()
 }
 \value{
 A vector of character strings, each of them corresponding to a different
-category.
+ category.
 }
 \description{
 This function generates a listing  of all the categories of apps 
- available through the \code{\link[<teachR>:<teachR>-package]{teachR}} 
- library.
+ available through the \code{teachR} library.
 }
 \examples{
-list_categories()
+\dontrun{
+ list_categories()
+}
 
 }
 \author{
-Simon Garnier: \email{garnier@njit.edu}, \link[https://twitter.com/sjmgarnier]{@sjmgarnier}
+Simon Garnier, \email{garnier@njit.edu}
 }
-

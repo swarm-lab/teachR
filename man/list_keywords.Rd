@@ -2,24 +2,24 @@
 % Please edit documentation in R/list_keywords.R
 \name{list_keywords}
 \alias{list_keywords}
-\title{List Keywords of All \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
+\title{List Keywords of All \code{teachR} Apps}
 \usage{
 list_keywords()
 }
 \value{
 A vector of character strings, each of them corresponding to a different
-keyword.
+ keyword.
 }
 \description{
 This function generates a listing of all the keywords of apps 
- available through the \code{\link[<teachR>:<teachR>-package]{teachR}} 
- library.
+ available through the \code{teachR} library.
 }
 \examples{
-list_keywords()
+\dontrun{
+ list_keywords()
+}
 
 }
 \author{
-Simon Garnier: \email{garnier@njit.edu}, \link[https://twitter.com/sjmgarnier]{@sjmgarnier}
+Simon Garnier, \email{garnier@njit.edu}
 }
-

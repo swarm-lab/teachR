@@ -1,26 +1,26 @@
-#' @title List Categories of All \code{\link[<teachR>:<teachR>-package]{teachR}} Apps 
+#' @title List Categories of All \code{teachR} Apps 
 #'
 #' @description This function generates a listing  of all the categories of apps 
-#'  available through the \code{\link[<teachR>:<teachR>-package]{teachR}} 
-#'  library. 
+#'  available through the \code{teachR} library. 
 #' 
 #' @return A vector of character strings, each of them corresponding to a different
-#' category.
+#'  category.
 #' 
-#' @author Simon Garnier: \email{garnier@@njit.edu}, \link[https://twitter.com/sjmgarnier]{@@sjmgarnier}
+#' @author Simon Garnier, \email{garnier@@njit.edu}
 #' 
 #' @examples
-#' list_categories()
+#' \dontrun{
+#'  list_categories()
+#' }
 #' 
 #' @export
-#'
 list_categories <- function() {  
   apps <- dir(paste0(find.package("teachR"), "/apps"))
   info_table <- data.frame()
   
   for (i in 1:length(apps)) {
-    info <- read.table(paste0(find.package("teachR"), "/apps/", apps[i], "/info"), sep = ":")
-    info <- t(as.matrix(info)[,2])
+    info <- utils::read.table(paste0(find.package("teachR"), "/apps/", apps[i], "/info"), sep = ":")
+    info <- t(as.matrix(info)[, 2])
     info_table <- rbind(info_table, info)
   }
   info_table[] <- lapply(info_table, as.character)
@@ -32,7 +32,3 @@ list_categories <- function() {
   categories <- sort(unique(unlist(categories)))
   sub(" ", "", categories)
 }
-
-
-
-

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//index.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//reference/export_app.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//reference/list_apps.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//reference/list_categories.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//reference/list_keywords.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//reference/run_app.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//articles/z1_install.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//articles/z2_usage.html</loc>
+  </url>
+  <url>
+    <loc>https://swarm-lab.github.io/teachR//articles/z3_participate.html</loc>
+  </url>
+</urlset>

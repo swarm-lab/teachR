@@ -1,5 +1,14 @@
-teachR
-======
+# teachR - R package for distributing web applications for educational use 
+
+[![Travis-CI Build Status](https://travis-ci.org/swarm-lab/teachR.svg?branch=master)](https://travis-ci.org/swarm-lab/teachR)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/swarm-lab/teachR?branch=master&svg=true)](https://ci.appveyor.com/project/swarm-lab/teachR)
+
+**Please submit all suggestions and bug reports 
+[here](https://github.com/swarm-lab/teachR/issues). Thanks!**
+
+---
+
+## Description <img src="reference/figures/logo.png" align="right" alt="" width="120" />
 
 `teachR` is a package for [`R`](http://www.r-project.org) that bundles several 
 [`Shiny`](http://shiny.rstudio.com/) web applications for educational use. 
@@ -16,8 +25,8 @@ on [`shinyapp.io`](https://www.shinyapps.io/) or on a personal
 
 The `teachR` package is at a very early stage of development. It contains only a 
 few [`Shiny`](http://shiny.rstudio.com/) applications at the moment, but this 
-number is meant to grow with the help [`Shiny`](http://shiny.rstudio.com/) 
-developers willing to make their educational web applications more easily 
+number is meant to grow with the help of [`Shiny`](http://shiny.rstudio.com/) 
+developers looking to make their educational web applications more easily 
 accessible. 
 
 If you are a [`Shiny`](http://shiny.rstudio.com/) developer and want to 
@@ -27,24 +36,10 @@ send me a pull request.
 
 ---
 
-#### Installation
-Installing `teachR` from this GitHub repository is pretty straightforward: 
-simply copy the following lines of code in your R terminal: 
+## Quick start guides
 
-```{r}
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("swarm-lab/teachR")
-
-library(teachR)
-```
-
-Use the package's help to learn how to discover and run the applications provided
-in `teachR`. 
-
----
-
-#### Maintainer(s)
-Simon Garnier - [@sjmgarnier](https://twitter.com/sjmgarnier) - 
-<garnier@njit.edu>
+1. [Installing teachR](https://swarm-lab.github.io/teachR/articles/z1_install)
+2. [Using teachR](https://swarm-lab.github.io/ROpenCVLite/articles/z2_usage.html)
+3. [Adding new apps to teachR](https://swarm-lab.github.io/ROpenCVLite/articles/z3_participate.html)
 
 ---

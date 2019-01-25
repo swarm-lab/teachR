@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_apps.R
 \name{list_apps}
 \alias{list_apps}
-\title{List \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
+\title{List \code{teachR} Apps}
 \usage{
 list_apps(categories = NULL, keywords = NULL)
 }
@@ -18,20 +18,21 @@ This function opens an html file.
 }
 \description{
 This function generates a webpage listing all the apps available 
- through the \code{\link[<teachR>:<teachR>-package]{teachR}} library. The 
- list can be filtered by category (type \code{list_categories()} for a list 
- of existing categories) and keywords (type \code{list_keywords()} for a list 
- of existing keywords).
+ through the \code{teachR} library. The list can be filtered by category 
+ (type \code{list_categories()} for a list of existing categories) and 
+ keywords (type \code{list_keywords()} for a list of existing keywords).
 }
 \details{
 If called from RStudio, the list will open in the internal RStudio 
-viewer. If called from a terminal, it will open in your default internet browser.
+ viewer. If called from a terminal, it will open in your default internet 
+ browser.
 }
 \examples{
-list_apps(categories = c("biology", "social science"))
+\dontrun{
+ list_apps(categories = c("biology", "social science"))
+}
 
 }
 \author{
-Simon Garnier: \email{garnier@njit.edu}, \link[https://twitter.com/sjmgarnier]{@sjmgarnier}
+Simon Garnier, \email{garnier@njit.edu}
 }
-

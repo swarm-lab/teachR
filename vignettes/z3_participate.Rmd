@@ -1,0 +1,10 @@
+---
+title: "1 - Installing teachR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pkgdown}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+__This page describes how to add apps to [`teachR`](https://github.com/swarm-lab/teachR).__ 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/export_app.R
 \name{export_app}
 \alias{export_app}
-\title{Export \code{\link[<teachR>:<teachR>-package]{teachR}} Apps}
+\title{Export \code{teachR} Apps}
 \usage{
 export_app(app, dest)
 }
 \arguments{
-\item{app}{The name of the app to run.}
+\item{app}{The name of the app to export.}
 
 \item{dest}{The destination of the app folder on the user's computer. A folder
 with the name of the app will be created at this location.}
@@ -16,17 +16,18 @@ with the name of the app will be created at this location.}
 This function does not return anything.
 }
 \description{
-This function expor a Shiny app provided by the 
- \code{\link[<teachR>:<teachR>-package]{teachR}} library to a local folder on 
+This function exports a Shiny app provided by the 
+ \code{teachR} library to a local folder on 
  a user's computer. Useful for modifying the app or running it on a Shiny 
  Server instance for example.
 }
 \examples{
-# Export app to the current working directory
-export_app("aggregation_segregation", ".")
+\dontrun{
+ # Export app to the current working directory
+ export_app("aggregation_segregation", ".")
+}
 
 }
 \author{
-Simon Garnier: \email{garnier@njit.edu}, \link[https://twitter.com/sjmgarnier]{@sjmgarnier}
+Simon Garnier, \email{garnier@njit.edu}
 }
-

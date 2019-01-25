@@ -1,14 +1,28 @@
 Package: teachR
 Type: Package
-Title: TODO
-Version: 0.1
-Date: 2015-05-13
-Author: Simon Garnier
+Title: R Package For Distributing Web Applications For Educational Use 
+Version: 0.2
+Authors@R: c(
+    person("Simon", "Garnier", email = "garnier@njit.edu", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-3886-3974"))
+  )
 Maintainer: Simon Garnier <garnier@njit.edu>
-Description: TODO
-License: GPL (>= 3)
+Description: teachR is a package for R that bundles several Shiny web 
+  applications for educational use. The goal of teachR is to provide teachers 
+  and educators with free, easy-to-use and interactive applications for 
+  complementing their courses with virtual demonstrations and/or experiments. 
+License: GPL-3
 Imports:
-    shiny (>= 0.11.1),
-    pacman (>= 0.4.1),
-    shinythemes (>= 1.1.1)
-RoxygenNote: 5.0.1
+    shiny (>= 1.2.0),
+    pacman (>= 0.5.0),
+    shinythemes (>= 1.1.2),
+    dplyr (>= 0.7.8),
+    markdown (>= 0.9),
+    mime (>= 0.6)
+Suggests:
+    knitr
+VignetteBuilder: knitr
+URL: https://swarm-lab.github.io/teachR/, https://github.com/swarm-lab/teachR
+BugReports: https://github.com/swarm-lab/teachR/issues
+RoxygenNote: 6.1.1
+Encoding: UTF-8

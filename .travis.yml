@@ -1,0 +1,58 @@
+language: R
+sudo: false
+cran: http://cran.rstudio.com
+cache: packages
+warnings_are_errors: false
+os:
+  - linux
+  - osx
+
+r_build_args: "--no-manual --no-build-vignettes"
+r_check_args: "--as-cran --ignore-vignettes --no-examples --install-args=--build"
+
+before_install:
+  - fname=travis_helpers.sh
+  - wget -O ${fname} http://bit.ly/travis_helpers
+  - cat ${fname}; source ${fname}; rm ${fname}
+  - cat DESCRIPTION
+  - export PACKAGE_NAME=`package_name`
+  - export RCHECK_DIR=${PACKAGE_NAME}.Rcheck
+
+after_success:
+  - cat ${RCHECK_DIR}/00install.out
+  - cat ${RCHECK_DIR}/00check.log
+
+after_failure:
+  - cat ${RCHECK_DIR}/00install.out
+  - cat ${RCHECK_DIR}/00check.log
+
+before_deploy:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ];
+    then
+      PKG_TARBALL=$(ls -1t *.tgz | head -n 1);
+      PKG_TARBALL_WITH_R=`echo $PKG_TARBALL | sed 's/.tgz/_'"R${rver}"'.tgz/'` ;
+      mv ${PKG_TARBALL} ${PKG_TARBALL_WITH_R} ;
+      echo "Built tarball is ${PKG_TARBALL_WITH_R}" ;
+    fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ];
+    then
+      PKG_TARBALL=$(ls -1t *.tar.gz | head -n 1);
+      PKG_TARBALL_WITH_R=`echo $PKG_TARBALL | sed 's/.tar.gz/_'"R${rver}"'.tar.gz/'` ;
+      mv ${PKG_TARBALL} ${PKG_TARBALL_WITH_R} ;
+      echo "Built tarball is ${PKG_TARBALL_WITH_R}" ;
+    fi
+  - if [[ "${TRAVIS_OS_NAME}" = "osx" ]];
+    then
+      rm -f *.tar.gz;
+    fi
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: pVFJPm5rdLijONI/LaVsoaUH0jUJm2DfRROO2RoQanpRWGK+3r56ZcE/lgFGiCjmKigQhbDVY6ld/6Zt9ODI7pNFlu5fuSd4nGjY3RNjXO82kNCTHMHD79NGfHriHRzuAkjV/ahs7Vzotr3G9CMjwT1cgTqwJ4K03zoenZfZlRq4UzqLbaTaUn1z1UMZEFP1s4rP3/KTNwCbDxXkPSE6WDVtO+k4oCxKz5saLWkshrbcyBY409KLZgNpjIiHFWdUEFyUqMV9mFZkwH3duIbNQlFLK1IietHgmed4In1jr5JuyMH53aqDyE7zwxZPVR+Ct/3Zs6hRgVZrPHl9edMX+UdUXz5RES5efGOM/uvOle3F3tTMLj3f2iR7QlJ8KA/LXI97mmpJo47OT/2KhJHZNw6tmHDMhcAhnT3HPGgZkUMKToMqUGL3DUcuZO0IZ4I34BkBuuxVWO5GNcOEi/HwAKpD/d1Pww7eMlPzr5lnqpjZYMcqp+dtiNT6TFnM39gLVViIDTTSmr7uosNq6n0XAt3JhS/MkoQHSxz1bAaDXNu8ZVsQsW1EiujfWDz6gYd553RpCClaVYxNUC2bqXVtLuZMcT1afjx8Z5alPMJArXZELhv/TfjvwHB4hivj/6zlmS1SknNgoLwfQD66SC9j5b76r/VhTGHKDMkDDaGPMLw=
+  file_glob: true
+  file: ${PACKAGE_NAME}*.t*gz
+  on:
+    repo: swarm-lab/${PACKAGE_NAME}
+    tags: true
