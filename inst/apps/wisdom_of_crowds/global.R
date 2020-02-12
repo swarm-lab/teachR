@@ -18,5 +18,3 @@ memoise(woc <- function(n = 100, val = 200, error = 0.1, soc = 1) {
   
   res
 })
-
-N <- 1000

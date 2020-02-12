@@ -23,6 +23,9 @@ shinyUI(
                  sliderInput("soc", "Intensity of social influence", 
                              min = 0, max = 1, value = 0, width = "100%"), hr(),
                  
+                 sliderInput("rep", "Number of replicates", 
+                             min = 0, max = 1000, value = 500, width = "100%"), hr(),
+                 
                  div(style = "text-align: center;",
                      actionButton("goButton", "Rerun", icon = icon("refresh"))
                  )
